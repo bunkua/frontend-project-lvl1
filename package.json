@@ -1,0 +1,23 @@
+{
+  "name": "brain-games",
+  "version": "0.0.1",
+  "description": "First project in Hexlet FrontendJS",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bunkua/frontend-project-lvl1.git"
+  },
+  "author": "bunkua",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bunkua/frontend-project-lvl1/issues"
+  },
+  "homepage": "https://github.com/bunkua/frontend-project-lvl1#readme"
+}
