@@ -36,7 +36,7 @@ export const prepare = () => {
     return { question, answer: correctAnswer };
   };
 
-  return play(task, generateRoundData);
+  play(task, generateRoundData);
 };
 
 export default { prepare };

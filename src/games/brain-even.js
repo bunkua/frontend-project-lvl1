@@ -13,7 +13,7 @@ export const prepare = () => {
     return { answer: correctAnswer, question: questionNum };
   };
 
-  return play(task, generateRoundData);
+  play(task, generateRoundData);
 };
 
 export default { prepare };
