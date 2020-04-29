@@ -8,9 +8,9 @@ export const prepare = () => {
 
   const generateRoundData = () => {
     const questionNum = generateNumber();
-    const answer = isEven(questionNum) ? 'yes' : 'no';
+    const correctAnswer = isEven(questionNum) ? 'yes' : 'no';
 
-    return { answer, question: questionNum };
+    return { answer: correctAnswer, question: questionNum };
   };
 
   return play(task, generateRoundData);
