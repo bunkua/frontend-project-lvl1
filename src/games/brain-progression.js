@@ -1,5 +1,8 @@
-import { play } from '../cli.js';
+import play from '../cli.js';
 import { generateNumber } from '../helpers.js';
+
+const task = 'What number is missing in the progression?';
+const progressionLength = 10;
 
 const generateProgression = (start, step, length) => {
   const result = [];
@@ -9,23 +12,19 @@ const generateProgression = (start, step, length) => {
   return result;
 };
 
-export const prepare = () => {
-  const task = 'What number is missing in the progression?';
+const generateRoundData = () => {
+  const start = generateNumber(1, 100);
+  const step = generateNumber(1, 12);
 
-  const generateRoundData = () => {
-    const start = generateNumber(1, 100);
-    const step = generateNumber(1, 12);
-    const progressionLength = 10;
-    const progression = generateProgression(start, step, progressionLength);
+  const progression = generateProgression(start, step, progressionLength);
 
-    const hiddenElementId = generateNumber(0, progressionLength);
-    const correctAnswer = `${progression[hiddenElementId]}`;
-    progression[hiddenElementId] = '..';
+  const hiddenElementId = generateNumber(0, progressionLength);
+  const correctAnswer = progression[hiddenElementId];
+  progression[hiddenElementId] = '..';
 
-    return { question: progression, answer: correctAnswer };
-  };
-
-  play(task, generateRoundData);
+  return { question: progression, answer: correctAnswer };
 };
 
-export default { prepare };
+const runGame = () => play(task, generateRoundData);
+
+export default runGame;

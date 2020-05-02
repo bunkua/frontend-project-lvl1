@@ -1,25 +1,23 @@
-import { play } from '../cli.js';
+import play from '../cli.js';
 import { generateNumber } from '../helpers.js';
+
+const task = 'Find the greatest common divisor of given numbers.';
 
 const getAnswer = (a, b) => {
   if (!b) {
-    return `${a}`;
+    return a;
   }
   return getAnswer(b, a % b);
 };
 
-export const prepare = () => {
-  const task = 'Find the greatest common divisor of given numbers.';
-
-  const generateRoundData = () => {
-    const a = generateNumber();
-    const b = generateNumber();
-    const correctAnswer = getAnswer(a, b);
-    const question = `${a} and ${b}`;
-    return { question, answer: correctAnswer };
-  };
-
-  play(task, generateRoundData);
+const generateRoundData = () => {
+  const a = generateNumber();
+  const b = generateNumber();
+  const correctAnswer = getAnswer(a, b);
+  const question = `${a} and ${b}`;
+  return { question, answer: correctAnswer };
 };
 
-export default { prepare };
+const runGame = () => play(task, generateRoundData);
+
+export default runGame;

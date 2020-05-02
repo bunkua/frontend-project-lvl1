@@ -1,5 +1,7 @@
-import { play } from '../cli.js';
+import play from '../cli.js';
 import { generateNumber } from '../helpers.js';
+
+const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (number) => {
   if (number <= 1) {
@@ -15,17 +17,13 @@ const isPrime = (number) => {
   return true;
 };
 
-export const prepare = () => {
-  const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const generateRoundData = () => {
+  const questionNum = generateNumber(1, 100);
+  const correctAnswer = isPrime(questionNum) ? 'yes' : 'no';
 
-  const generateRoundData = () => {
-    const questionNum = generateNumber(1, 100);
-    const correctAnswer = isPrime(questionNum) ? 'yes' : 'no';
-
-    return { question: questionNum, answer: correctAnswer };
-  };
-
-  play(task, generateRoundData);
+  return { question: questionNum, answer: correctAnswer };
 };
 
-export default { prepare };
+const runGame = () => play(task, generateRoundData);
+
+export default runGame;

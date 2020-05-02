@@ -1,5 +1,7 @@
-import { play } from '../cli.js';
+import play from '../cli.js';
 import { generateNumber } from '../helpers.js';
+
+const task = 'What is the result of the expression?';
 
 const chooseOperation = () => {
   const operations = ['+', '-', '*'];
@@ -8,35 +10,28 @@ const chooseOperation = () => {
 };
 
 const getCorrectAnswer = (a, b, operation) => {
-  let answer;
   switch (operation) {
     case '+':
-      answer = a + b;
-      break;
+      return a + b;
     case '-':
-      answer = a - b;
-      break;
+      return a - b;
     case '*':
-      answer = a * b;
-      break;
-    default: break;
+      return a * b;
+    default:
+      throw new Error(`No such operation ${operation}`);
   }
-  return `${answer}`;
 };
 
-export const prepare = () => {
-  const task = 'What is the result of the expression?';
-  const generateRoundData = () => {
-    const a = generateNumber();
-    const b = generateNumber();
-    const operation = chooseOperation();
-    const correctAnswer = getCorrectAnswer(a, b, operation);
-    const question = `${a} ${operation} ${b}`;
+const generateRoundData = () => {
+  const a = generateNumber();
+  const b = generateNumber();
+  const operation = chooseOperation();
+  const correctAnswer = getCorrectAnswer(a, b, operation);
+  const question = `${a} ${operation} ${b}`;
 
-    return { question, answer: correctAnswer };
-  };
-
-  play(task, generateRoundData);
+  return { question, answer: correctAnswer };
 };
 
-export default { prepare };
+const runGame = () => play(task, generateRoundData);
+
+export default runGame;
