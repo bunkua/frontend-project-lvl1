@@ -26,7 +26,7 @@ const generateRoundData = () => {
   const a = generateNumber();
   const b = generateNumber();
   const operation = chooseOperation();
-  const correctAnswer = getCorrectAnswer(a, b, operation);
+  const correctAnswer = getCorrectAnswer(a, b, operation).toString();
   const question = `${a} ${operation} ${b}`;
 
   return { question, answer: correctAnswer };

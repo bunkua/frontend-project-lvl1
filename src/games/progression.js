@@ -18,8 +18,8 @@ const generateRoundData = () => {
 
   const progression = generateProgression(start, step, progressionLength);
 
-  const hiddenElementId = generateNumber(0, progressionLength);
-  const correctAnswer = progression[hiddenElementId];
+  const hiddenElementId = generateNumber(0, progressionLength - 1);
+  const correctAnswer = progression[hiddenElementId].toString();
   progression[hiddenElementId] = '..';
 
   return { question: progression, answer: correctAnswer };

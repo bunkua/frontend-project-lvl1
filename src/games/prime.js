@@ -8,8 +8,8 @@ const isPrime = (number) => {
     return false;
   }
 
-  for (let x = 2; x <= Math.sqrt(number); x += 1) {
-    if (number % x === 0) {
+  for (let i = 2; i <= Math.sqrt(number); i += 1) {
+    if (number % i === 0) {
       return false;
     }
   }
@@ -18,10 +18,10 @@ const isPrime = (number) => {
 };
 
 const generateRoundData = () => {
-  const questionNum = generateNumber(1, 100);
-  const correctAnswer = isPrime(questionNum) ? 'yes' : 'no';
+  const question = generateNumber(1, 100);
+  const correctAnswer = isPrime(question) ? 'yes' : 'no';
 
-  return { question: questionNum, answer: correctAnswer };
+  return { question, answer: correctAnswer };
 };
 
 const runGame = () => play(task, generateRoundData);

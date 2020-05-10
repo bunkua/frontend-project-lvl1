@@ -3,17 +3,17 @@ import { generateNumber } from '../helpers.js';
 
 const task = 'Find the greatest common divisor of given numbers.';
 
-const getAnswer = (a, b) => {
+const getGcd = (a, b) => {
   if (!b) {
     return a;
   }
-  return getAnswer(b, a % b);
+  return getGcd(b, a % b);
 };
 
 const generateRoundData = () => {
   const a = generateNumber();
   const b = generateNumber();
-  const correctAnswer = getAnswer(a, b);
+  const correctAnswer = getGcd(a, b).toString();
   const question = `${a} and ${b}`;
   return { question, answer: correctAnswer };
 };
